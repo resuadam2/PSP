@@ -1,0 +1,5 @@
+taskmgr.exe (taskmgr significa task Manager) es el Administrador de tareas de Windows. 
+Permanece siempre activo cuando un usuario desea ver cuáles son los procesos que se ejecutan en segundo plano.
+Svchost.exe es una parte importante del sistema operativo que aloja varios servicios. 
+Con pocas palabras, svchost.exe se destina a agrupar y asignar servicios para que consuman menos recursos del sistema. 
+Normalmente, el archivo svchost.exe pueden encontrarse en "%SystemRoot%\System32\svchost.exe" or "%SystemRoot%\SysWOW64\svchost.exe". 
