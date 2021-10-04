@@ -1,0 +1,2 @@
+1.)	Aplicación que se ejecuta al inicio del sistema y no finaliza nunca salvo que se le envíe una señal de finalización explicita (generalmente apagar el sistema). 
+Es un tipo especial de proceso informático que se ejecuta en segundo plano en vez de ser controlado directamente por el usuario.
