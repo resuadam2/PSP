@@ -1,0 +1,14 @@
+Ejercicio 6. ¿Cómo se finaliza desde consola un proceso en Windows? ¿Y en Linux?
+
+En Windows:
+  Taskkill /IM <Nombre de imagen> /F
+      o
+  Taskkill /PID <Numero> /F
+  
+En Linux:
+El comando de interrupción se utiliza para enviar una señal a un proceso o para finalizarlo (cancelar su ejecución). 
+Generalmente se usa: kill -señal PID. Siendo que el PID es el número que identifica el proceso (Process ID).
+
+Más información: https://ayudalinux.com/finalizar-proceso-terminal/
+
+Hay más formas de finalizar procesos en ambos sistemas operativos.
