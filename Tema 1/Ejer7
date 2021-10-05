@@ -1,0 +1,28 @@
+Ejercicio 7. Investigar sobre los scripts escritos en batch, ¿Qué son y para que sirven? ¿Cómo podemos ejecutarlos?
+
+¿Qué son los archivos batch?
+
+Los archivos batch son aplicaciones para Windows, que pueden ser creadas por los propios usuarios, para infinidad de tareas.
+Son simples archivos de texto con la extensión de archivo .CMD o .BAT, que al ejecutarlas (dar dos clics en ellas), sus instrucciones son ejecutadas en la Consola de CMD o Símbolo del sistema.
+El Símbolo del sistema es una herramienta heredada de antiguas versiones de Windows pero completamente funcional.
+Requiere que los comandos y sus parámetros sean introducidos manualmente, con la alternativa de ejecutarlos mediante un batch.
+
+Cómo crear un archivo batch, y su estructura:
+
+Un archivo batch contiene una o varias líneas de código, que se ejecutan secuencialmente (una a una).
+  - La primera de ellas es opcional: @echo off.
+ Es usada para mostrar en la ventana de la consola mientras se ejecuta el batch, solo la información necesaria.
+  - A continuación se agregan él o los comandos necesarios.
+  - Finalmente se puede usar el comando pause, para evitar que se cierre la ventana, de utilidad en muchas situaciones.
+En ese caso será necesario presionar cualquier tecla para cerrarla.
+Sigue los siguientes pasos para crear un archivo batch de ejemplo:
+    1- Da un clic derecho con el mouse en el escritorio y en el menú escoge: Nuevo -> Documento de texto.
+    2- Copia y pega las siguientes instrucciones:
+      @echo off
+      SYSTEMINFO > %userprofile%\Desktop\InfoPC.txt
+    3- Guarda los cambios y renombra el archivo, de modo que la extensión de archivo sea "cmd", en vez de la predeterminada "txt".
+    Extensión de un archivo batch
+    Es todo, al dar dos clics en el archivo o seleccionarlo y presionar la tecla Enter, Windows ejecutará las instrucciones que contiene.
+    En este ejemplo se crea en el Escritorio un archivo de nombre "InfoPC.txt", que contiene información técnica del equipo, proporcionada por la herramienta Systeminfo.
+    
+ Más información: https://norfipc.com/comandos/que-son-archivos-batch-bat-usos-practicos-como-crearlos.php
