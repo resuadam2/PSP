@@ -1,0 +1,14 @@
+Ejercicio 9. Escribir una aplicación en Java que cree un proceso que ejecute el script helloBatch.bat almacenado en el directorio raíz del programa. 
+Este script saluda a todo aquel que pase un nombre como parámetro.
+
+Código de helloBatch.bat:
+  --Ejecución: helloBatch.bat Pepe
+  --Respuesta: Hola Pepe
+  @echo off
+  echo Hola %1%
+
+Pistas (Clases implicadas en la aplicación):
+  ProcessBuilder
+  Process
+  InputStreamReader
+  BufferedReader
