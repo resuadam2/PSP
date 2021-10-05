@@ -1,3 +1,5 @@
+Ejercicio 2. ¿Para qué sirven los procesos Taskmgr.exe, y svchost.exe?
+
 taskmgr.exe (taskmgr significa task Manager) es el Administrador de tareas de Windows. 
 Permanece siempre activo cuando un usuario desea ver cuáles son los procesos que se ejecutan en segundo plano.
 Svchost.exe es una parte importante del sistema operativo que aloja varios servicios. 
