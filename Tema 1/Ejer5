@@ -1,0 +1,9 @@
+Ejercicio 5. ¿Que es el PID de un proceso?
+
+En computación, PID es una abreviatura de process ID, o sea, ID del proceso o bien identificador de procesos. 
+El identificador de procesos es un número entero usado por el kernel de algunos sistemas operativos (como el de Unix o el de Windows NT) para identificar un proceso de forma unívoca.
+
+Para asignar el PID, el kernel utiliza internamente una variable global que se va incrementando con cada nuevo proceso creado con una llamada fork(). 
+Cuando la variable alcanza un cierto valor límite se empieza otra vez desde 0, buscando números que no estén asignados ya a otro proceso en ejecución.
+
+El valor 0 del PID está reservado a la tarea ociosa del sistema, un proceso que se crea al arrancar el sistema y nunca puede finalizar.
