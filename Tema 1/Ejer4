@@ -20,3 +20,5 @@ Análogamente, la máquina indica la dirección de crecimiento de la pila, hacia
 Los registros de propósito general, que contienen datos generados por el proceso durante su ejecución. 
 Para simplificar la discusión, se van a considerar sólo dos registros, el registro 0 y el registro 1.
 El contexto a nivel del sistema de un proceso está formado por: la entrada de la tabla de procesos asociada a dicho proceso, su área U, su pila del núcleo, su tabla de regiones por proceso, las entradas de la tabla de regiones apuntadas por las entradas de su tabla de regiones por proceso y las tablas de páginas asociadas a dichas entradas de la tabla de regiones.
+
+Más información: http://ocw.innova.uned.es/ocwuniversia/Ing_tecnico_infor_sistemas/SO_II/contenidos_html/ims_import_3/tema_4_05.htm
