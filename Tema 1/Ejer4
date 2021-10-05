@@ -1,0 +1,22 @@
+Ejercicio 4. ¿Qué es el contexto de un proceso?
+
+De forma general, el contexto de un proceso en un cierto instante de tiempo se puede definir como la información relativa al proceso que el núcleo debe conocer para poder iniciar o continuar su ejecución. 
+Cuando se ejecuta un proceso se dice que el sistema se ejecuta en el contexto de dicho proceso. 
+Por lo que cuando el núcleo decide pasar a ejecutar otro proceso debe de cambiar de contexto, de forma que el sistema pasará a ejecutarse en el contexto del nuevo proceso.
+
+El contexto de un proceso en un cierto instante de tiempo está formado por su espacio de direcciones virtuales, los contenidos de los registros hardware de la máquina y las estructuras de datos del núcleo asociadas a dicho proceso. 
+Formalmente, el contexto de un proceso se puede considerar como la unión del contexto a nivel de usuario, contexto de registros y contexto a nivel del sistema.
+
+El contexto a nivel de usuario de un proceso está formado por su código, datos, pila de usuario y memoria compartida que ocupan el espacio de direcciones virtuales del proceso.
+
+El contexto de registros de un proceso está formado por el contenido de lo siguientes registros de la máquina:
+
+El contador del programa que indica la dirección de la siguiente instrucción que debe ejecutar la CPU. 
+Esta dirección es una dirección virtual del espacio de memoria del núcleo o del usuario.
+El registro de estado del procesador que indica el estado del hardware de la máquina en relación al proceso en ejecución. 
+Contiene diferentes campos para almacenar la siguiente información: el modo de ejecución, el nivel de prioridad de interrupción, el indicador de rebose, el indicador de arrastre, etc.
+El puntero de la pila donde se almacena la dirección virtual, dependiendo de la arquitectura de la máquina, de la próxima entrada libre o de la última utilizada en la pila de usuario (ejecución en modo usuario) o en la pila del núcleo (ejecución en modo núcleo). 
+Análogamente, la máquina indica la dirección de crecimiento de la pila, hacia las direcciones altas o bajas.
+Los registros de propósito general, que contienen datos generados por el proceso durante su ejecución. 
+Para simplificar la discusión, se van a considerar sólo dos registros, el registro 0 y el registro 1.
+El contexto a nivel del sistema de un proceso está formado por: la entrada de la tabla de procesos asociada a dicho proceso, su área U, su pila del núcleo, su tabla de regiones por proceso, las entradas de la tabla de regiones apuntadas por las entradas de su tabla de regiones por proceso y las tablas de páginas asociadas a dichas entradas de la tabla de regiones.
