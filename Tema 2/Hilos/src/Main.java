@@ -41,6 +41,7 @@ public class Main {
 		Loading l1 = new Loading("Loader", t1);
 		t1.start();
 		l1.start();
+		
 	}
 
 	// Ejercicio 7
