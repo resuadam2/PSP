@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -45,19 +46,20 @@ public class Main {
 	}
 
 	// Ejercicio 7
-	private static final int CANTIDAD_CONSUMIDORES = 5;
+	private static final int CANTIDAD_CONSUMIDORES = 3;
+	private static final int ITERATIONS_PRODUCER = 3;
 	private static Contenedor container;
 	private static Productor productor;
-	private static Consumidor [] consumidores;
+	private static ArrayList<Consumidor> consumidores;
 
 	public static void ejercicio7() {
 		container = new Contenedor();
-		productor = new Productor(container, 1);
-		consumidores = new Consumidor[CANTIDAD_CONSUMIDORES];
-		for (int i = 0; i < consumidores.length; i++) {
-			consumidores[i] = new Consumidor(container, i);
-			consumidores[i].start();
+		consumidores = new ArrayList<Consumidor>();
+		for (int i = 0; i < consumidores.size(); i++) {
+			consumidores.set(i, new Consumidor(container, i));
+			consumidores.get(i).start();
 		}
+		productor = new Productor(container, 1, consumidores);
 		productor.start();
 	}
 
@@ -105,19 +107,25 @@ public class Main {
 					System.out.println("Inicio ejercicio 7. ");
 					ejercicio7();
 					while(productor.isAlive()) {
-						Thread.sleep(5000);
-						System.out.println("Para terminar la ejecución del programa pulse 0.");
-						opt = scan.nextLine();
-						if(opt.equals("0")) {
+						if(container.getIterations() > ITERATIONS_PRODUCER) {
 							System.out.println("Finalizando ejercicio 7...");
-							for(int i = 0; i < consumidores.length; i++) {
-								consumidores[i].isFinished(true);
+							productor.setFinished(true);
+							container.endIterations();
+							productor.join();
+							System.out.println("Productor finalizado.");
+							for(Consumidor consumidor: consumidores) {
+								System.out.println("Finalizando consumidor " + consumidor.getIdentificador());
+								consumidor.setFinished(true);
+								System.out.println("Consumidor flag a true.");
+								container.endIterations();
+								System.out.println("End iterations ejecutado.");
+								consumidor.join();
+								System.out.println("Consumidor finalizado.");
 							}
-							productor.isFinished(true);
 						}
-						Thread.sleep(1000);
 					}
 					System.out.println("Fin ejercicio 7.");
+					Thread.sleep(1000);
 					break;
 				case "8":
 					// TODO
