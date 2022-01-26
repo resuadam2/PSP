@@ -47,20 +47,34 @@ public class Main {
 
 	// Ejercicio 7
 	private static final int CANTIDAD_CONSUMIDORES = 3;
-	private static final int ITERATIONS_PRODUCER = 3;
+	private static final int ITERATIONS_CONSUMIDOR = 3;
 	private static Contenedor container;
 	private static Productor productor;
 	private static ArrayList<Consumidor> consumidores;
 
+	/*
+	 * TODO :
+	 * Modificar el ejercicio para que tanto los productores como los consumidores estén
+	 * en el contenedor declarados, de esta forma tanto el número de iteraciones como el de
+	 * consumidores y productores creados se podría controlar desde allí a priori al tener 
+	 * que monitorizarlos (notificarlos y crearlos) todos desde la misma clase "dueña" 
+	 * 
+	 */
 	public static void ejercicio7() {
 		container = new Contenedor();
 		consumidores = new ArrayList<Consumidor>();
-		for (int i = 0; i < consumidores.size(); i++) {
-			consumidores.set(i, new Consumidor(container, i));
+		for (int i = 0; i < CANTIDAD_CONSUMIDORES; i++) {
+			System.out.println("Generando consumidor " + i);
+			consumidores.add(new Consumidor(container, i));
+			System.out.println("Comenzando consumidor " + i);
 			consumidores.get(i).start();
 		}
 		productor = new Productor(container, 1, consumidores);
 		productor.start();
+	}
+	
+	public static void ejercicio8() {
+		
 	}
 
 	public static void main(String[] args) {
@@ -76,59 +90,44 @@ public class Main {
 				case "1":
 					System.out.println("Inicio ejercicio 1. ");
 					ejercicio1();
-					Thread.sleep(3000);
+					Thread.sleep(1000);
 					System.out.println("Fin ejercicio 1.");
 					break;
 				case "2":
 					System.out.println("Inicio ejercicio 2. ");
 					ejercicio2();
-					Thread.sleep(3000);
+					Thread.sleep(1000);
 					System.out.println("Fin ejercicio 2.");
 					break;
 				case "3":
 					System.out.println("Inicio ejercicio 3. ");
 					ejercicio3();
-					Thread.sleep(3000);
+					Thread.sleep(1000);
 					System.out.println("Fin ejercicio 3.");
 					break;
 				case "4":
 					System.out.println("Inicio ejercicio 4. ");
 					ejercicio4();
-					Thread.sleep(3000);
+					Thread.sleep(1000);
 					System.out.println("Fin ejercicio 4.");
 					break;
 				case "5":
 					System.out.println("Inicio ejercicio 5. ");
 					ejercicio5();
-					Thread.sleep(3000);
+					Thread.sleep(1000);
 					System.out.println("Fin ejercicio 5.");
 					break;
 				case "7":
 					System.out.println("Inicio ejercicio 7. ");
 					ejercicio7();
-					while(productor.isAlive()) {
-						if(container.getIterations() > ITERATIONS_PRODUCER) {
-							System.out.println("Finalizando ejercicio 7...");
-							productor.setFinished(true);
-							container.endIterations();
-							productor.join();
-							System.out.println("Productor finalizado.");
-							for(Consumidor consumidor: consumidores) {
-								System.out.println("Finalizando consumidor " + consumidor.getIdentificador());
-								consumidor.setFinished(true);
-								System.out.println("Consumidor flag a true.");
-								container.endIterations();
-								System.out.println("End iterations ejecutado.");
-								consumidor.join();
-								System.out.println("Consumidor finalizado.");
-							}
-						}
-					}
 					System.out.println("Fin ejercicio 7.");
 					Thread.sleep(1000);
 					break;
 				case "8":
-					// TODO
+					System.out.println("Inicio ejercicio 8. ");
+					ejercicio8();
+					System.out.println("Fin ejercicio 8.");
+					Thread.sleep(1000);
 					System.out.println(" -- TODO -- ");
 					break;
 				case "0":

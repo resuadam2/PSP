@@ -56,6 +56,7 @@ public class Contenedor {
 			}
 		}
 		setFull(false);
+		this.iterations++;
 		notifyAll();
 		return getCont();
 	}
@@ -70,7 +71,6 @@ public class Contenedor {
 			}
 		}
 		setCont(value + getCont());
-		this.iterations++;
 		if(getCont() == CONTAINER_SIZE) {
 			setFull(true);
 		}
