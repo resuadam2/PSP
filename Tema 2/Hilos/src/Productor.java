@@ -5,7 +5,7 @@ public class Productor implements Runnable {
 	private final Contenedor container;
 	private final int id;
 	private final int TIME_TO_WAIT = 1500;
-	private static Thread[] consumidores;
+	private Thread[] consumidores;
 
 	
 	public Productor(Contenedor container, int id, Thread[] consumidores) {
@@ -16,7 +16,7 @@ public class Productor implements Runnable {
 	}
 	
 	public boolean consumidoresAlive() {
-		for(Thread c: consumidores) {
+		for(Thread c: this.consumidores) {
 			if(!c.isAlive()) return false; 
 		}
 		return true;
@@ -26,7 +26,8 @@ public class Productor implements Runnable {
 	public void run() {
 		System.out.println("Starting producer...");
 		while(consumidoresAlive()) {
-			int add = random.nextInt(5);
+//			int add = random.nextInt(5);
+			int add = 1;
 			System.out.println("El productor " + id + " pone " + add);
 			container.put(add);
 			try {
@@ -35,5 +36,6 @@ public class Productor implements Runnable {
 				System.err.println("Error in producer " + e.getMessage());
 			}
 		}
+		System.out.println("Ending producer...");
 	}
 }

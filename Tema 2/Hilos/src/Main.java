@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -55,19 +56,23 @@ public class Main {
 	public static void ejercicio7() {
 		container = new Contenedor();
 		consumidores = new Thread[CANTIDAD_CONSUMIDORES];
-		int i = 0;
 		//Cambiar a for normal
-		for(Thread c: consumidores) {
-			c = new Thread(new Consumidor(container, i));
-			c.start();
-			i++;
+		for(int i = 0; i < consumidores.length; i++) {
+			consumidores[i] = new Thread(new Consumidor(container, i));
+			consumidores[i].start();
 		}
 		productor = new Thread(new Productor(container,1,consumidores));
 		productor.start();
 	}
 	
-	public static void ejercicio8() {
-		
+	public static void ejercicio8(int numTasks) throws InterruptedException {
+		Counter contador = new Counter();
+		for(int i = 0; i < numTasks; i++) {
+			MyTask t = new MyTask(contador);
+			t.start();
+		}
+		Thread.sleep(2000);
+		System.out.println("Final counter: " + contador.getCont());
 	}
 
 	public static void main(String[] args) {
@@ -114,14 +119,25 @@ public class Main {
 					System.out.println("Inicio ejercicio 7. ");
 					ejercicio7();
 					Thread.sleep(10000);
+					for(int i = 0; i < consumidores.length; i++) {
+						if(consumidores[i].isAlive()) System.out.println("Estoy vivo");
+					}			
+					Consumidor.resetAccesos();
 					System.out.println("Fin ejercicio 7.");
 					break;
 				case "8":
 					System.out.println("Inicio ejercicio 8. ");
-					ejercicio8();
+					int numTasks = 1;
+					try {
+						System.out.println("Introduzca el número de Tasks\n(Debe ser mayor a 0)");
+						numTasks = Integer.parseInt(scan.nextLine());
+						if(numTasks <= 0) numTasks = 1;
+					} catch (InputMismatchException e) {
+						System.err.println("Error al introducir el número, se usará el valor 1");
+					}
+					ejercicio8(numTasks);
 					System.out.println("Fin ejercicio 8.");
 					Thread.sleep(1000);
-					System.out.println(" -- TODO -- ");
 					break;
 				case "0":
 					System.out.println("Fin del programa.");

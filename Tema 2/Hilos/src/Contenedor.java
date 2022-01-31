@@ -1,9 +1,10 @@
 public class Contenedor {
 	private int cont;
 	private boolean full = false;
+	private static final int BUFFER_SIZE = 1;
 
 	public synchronized int get() {
-		while (!full) {
+		while (!full && Consumidor.accesos > 0) {
 			try {
 				wait();
 			} catch (InterruptedException e) {
@@ -11,11 +12,12 @@ public class Contenedor {
 			}
 		}
 		full = false;
-		notify();
+		notifyAll();
 		return cont;
 	}
 
 	public synchronized void put(int value) {
+		if(value > BUFFER_SIZE) value = BUFFER_SIZE;
 		while (full) {
 			try {
 				wait();
