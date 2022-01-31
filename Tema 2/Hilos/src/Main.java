@@ -46,30 +46,23 @@ public class Main {
 	}
 
 	// Ejercicio 7
-	private static final int CANTIDAD_CONSUMIDORES = 3;
-	private static final int ITERATIONS_CONSUMIDOR = 3;
+	
 	private static Contenedor container;
-	private static Productor productor;
-	private static ArrayList<Consumidor> consumidores;
-
-	/*
-	 * TODO :
-	 * Modificar el ejercicio para que tanto los productores como los consumidores estén
-	 * en el contenedor declarados, de esta forma tanto el número de iteraciones como el de
-	 * consumidores y productores creados se podría controlar desde allí a priori al tener 
-	 * que monitorizarlos (notificarlos y crearlos) todos desde la misma clase "dueña" 
-	 * 
-	 */
+	private static Thread productor;
+	private static Thread[] consumidores;
+	private static final int CANTIDAD_CONSUMIDORES = 5;
+	
 	public static void ejercicio7() {
 		container = new Contenedor();
-		consumidores = new ArrayList<Consumidor>();
-		for (int i = 0; i < CANTIDAD_CONSUMIDORES; i++) {
-			System.out.println("Generando consumidor " + i);
-			consumidores.add(new Consumidor(container, i));
-			System.out.println("Comenzando consumidor " + i);
-			consumidores.get(i).start();
+		consumidores = new Thread[CANTIDAD_CONSUMIDORES];
+		int i = 0;
+		//Cambiar a for normal
+		for(Thread c: consumidores) {
+			c = new Thread(new Consumidor(container, i));
+			c.start();
+			i++;
 		}
-		productor = new Productor(container, 1, consumidores);
+		productor = new Thread(new Productor(container,1,consumidores));
 		productor.start();
 	}
 	
@@ -120,8 +113,8 @@ public class Main {
 				case "7":
 					System.out.println("Inicio ejercicio 7. ");
 					ejercicio7();
+					Thread.sleep(10000);
 					System.out.println("Fin ejercicio 7.");
-					Thread.sleep(1000);
 					break;
 				case "8":
 					System.out.println("Inicio ejercicio 8. ");
