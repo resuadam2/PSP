@@ -16,7 +16,9 @@ public class MyTask extends Thread{
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		this.counter.increment();
-		System.out.println("I am the task " + getId() + " and the value of the counter is " + counter.getCont());
+		synchronized(this) {
+			this.counter.increment();
+			System.out.println("I am the task " + getId() + " and the value of the counter is " + counter.getCont());
+		}
 	}
 }
